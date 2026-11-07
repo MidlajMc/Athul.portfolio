@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Athul Santhosh, Creative Designer. Graphic design, motion graphics, AI video and UI/UX.">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Athul Santhosh Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: wide-type hero with photo slot, a timeline ruler motif, tabbed work gallery, chronological experience, contact. */
+:root{
+  --bg:#F1F5F2; --surface:#FFFFFF; --surface-2:#E4EBE6; --fg:#0F1713; --muted:#56655C; --line:#D0DAD3;
+  --accent:#0A8F4F; --accent-ink:#FFFFFF;
+  --f-display:'Unbounded',system-ui,sans-serif;
+  --f-body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#090D0B; --surface:#101614; --surface-2:#18211D; --fg:#E9F0EC; --muted:#8FA097; --line:#24302A;
+    --accent:#2FD27F; --accent-ink:#04170C; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#090D0B; --surface:#101614; --surface-2:#18211D; --fg:#E9F0EC; --muted:#8FA097; --line:#24302A;
+  --accent:#2FD27F; --accent-ink:#04170C; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--fg);
+  font-family:var(--f-body); font-size:16px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:0;
+}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top, 0px); z-index:30; background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.wrap{max-width:1160px; margin:0 auto}
+.mono{font-family:var(--f-mono); font-size:.75rem; letter-spacing:.08em; text-transform:uppercase}
+
+/* header */
+header.top{
+  position:sticky; top:env(safe-area-inset-top, 0px); z-index:20;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(10px);
+  margin-left:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right:calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  border-bottom:1px solid var(--line);
+}
+.top .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:12px}
+.brand{font-family:var(--f-display); font-weight:700; font-size:1.05rem; text-decoration:none; display:flex; align-items:center; gap:10px}
+.brand i{display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--accent)}
+nav.links{display:flex; align-items:center; gap:22px}
+nav.links a{font-size:.88rem; font-weight:600; text-decoration:none; color:var(--muted)}
+nav.links a:hover{color:var(--fg)}
+.theme-btn{
+  font:inherit; font-size:.8rem; font-weight:600; cursor:pointer;
+  background:transparent; color:var(--fg); border:1px solid var(--line);
+  padding:7px 14px; border-radius:999px;
+}
+.theme-btn:hover{border-color:var(--accent)}
+
+/* hero */
+.hero{padding-block:clamp(40px,8vw,88px) 0}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr); gap:clamp(24px,5vw,64px); align-items:end}
+.status{display:inline-flex; align-items:center; gap:10px; border:1px solid var(--line); border-radius:999px; padding:6px 14px; color:var(--muted)}
+.status b{width:8px; height:8px; border-radius:50%; background:var(--accent); animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+h1{
+  font-family:var(--f-display); font-weight:700; text-transform:uppercase;
+  font-size:clamp(2.3rem,8.2vw,6.2rem); line-height:.98; letter-spacing:-.03em;
+  margin:22px 0 22px; text-wrap:balance;
+}
+h1 span{display:block}
+h1 span.o{color:transparent; -webkit-text-stroke:1.5px var(--fg)}
+.lede{max-width:34em; font-size:1.1rem; color:var(--muted); margin:0 0 28px}
+.lede strong{color:var(--fg); font-weight:600}
+.cta{display:flex; flex-wrap:wrap; gap:12px}
+.btn{
+  font:inherit; font-weight:700; font-size:.92rem; text-decoration:none; cursor:pointer;
+  padding:13px 24px; border-radius:999px; border:1px solid var(--fg); color:var(--fg); background:transparent;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.btn.solid{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.btn:hover{transform:translateY(-1px)}
+
+.photo{position:relative; margin:0; max-width:420px; width:100%; justify-self:end}
+.photo::before{content:""; position:absolute; inset:14px -14px -14px 14px; border:1px solid var(--accent); border-radius:6px; pointer-events:none}
+.photo .frame{position:relative; aspect-ratio:4/5; border-radius:6px; overflow:hidden; background:var(--surface-2); display:grid; place-items:center}
+.photo img{width:100%; height:100%; object-fit:cover; display:block}
+.photo .mono{position:absolute; left:12px; bottom:10px; color:var(--muted)}
+.mono-mark{font-family:var(--f-display); font-weight:700; font-size:clamp(4rem,12vw,7rem); color:var(--line); letter-spacing:-.04em}
+.photo.has-photo .mono-mark, .photo.has-photo .hint{display:none}
+.hint{position:absolute; top:12px; left:12px; color:var(--muted)}
+.photo.has-photo .mono{color:#C9D3CD; text-shadow:0 1px 6px rgba(0,0,0,.6)}
+
+.ruler{position:relative; height:44px; margin-top:clamp(40px,6vw,72px); border-bottom:1px solid var(--line)}
+.ruler::before{
+  content:""; position:absolute; inset:auto 0 0 0; height:18px;
+  background:
+    repeating-linear-gradient(90deg, var(--muted) 0 1px, transparent 1px 72px) bottom/100% 18px no-repeat,
+    repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 12px) bottom/100% 9px no-repeat;
+}
+.ruler .head{position:absolute; left:64%; top:0; bottom:0; width:2px; background:var(--accent)}
+.ruler .head span{position:absolute; top:0; left:0; transform:translateX(-50%); background:var(--accent); color:var(--accent-ink); padding:2px 8px; border-radius:3px; white-space:nowrap}
+
+/* sections */
+section{padding-block:clamp(56px,9vw,104px) 0}
+.sec-head{display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between; gap:12px 32px; margin-bottom:32px}
+h2{font-family:var(--f-display); font-weight:500; font-size:clamp(1.6rem,4.4vw,2.7rem); line-height:1.08; letter-spacing:-.02em; margin:8px 0 0; text-wrap:balance}
+.eyebrow{color:var(--accent)}
+.sec-head p{margin:0; max-width:30em; color:var(--muted)}
+
+/* works */
+.tabs{display:flex; gap:8px; overflow-x:auto; padding-bottom:6px; margin-bottom:24px; scrollbar-width:thin}
+.tab{
+  flex:0 0 auto; font:inherit; font-weight:600; font-size:.92rem; cursor:pointer;
+  background:transparent; color:var(--muted); border:1px solid var(--line);
+  padding:10px 20px; border-radius:999px; display:inline-flex; align-items:center; gap:10px;
+}
+.tab:hover{color:var(--fg); border-color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--fg); color:var(--bg); border-color:var(--fg)}
+.tab .n{font-family:var(--f-mono); font-size:.7rem; opacity:.6}
+.panel-note{display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 24px; color:var(--muted); margin-bottom:20px}
+.grid{display:grid; gap:16px; grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.r-45{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{
+  position:relative; margin:0; border-radius:8px; overflow:hidden; cursor:pointer;
+  background:var(--surface); border:1px solid var(--line); aspect-ratio:var(--ratio,16/9);
+  padding:0; font:inherit; color:inherit; text-align:left; display:block; width:100%;
+}
+.card img,.card video{width:100%; height:100%; object-fit:cover; display:block}
+.card .cap{
+  position:absolute; inset:auto 0 0 0; padding:28px 14px 12px;
+  background:linear-gradient(to top, rgba(8,9,16,.82), transparent); color:#fff;
+  display:flex; justify-content:space-between; align-items:end; gap:12px;
+}
+.card .cap b{font-weight:600; font-size:.9rem}
+.card .cap .mono{font-size:.65rem; opacity:.8}
+.card.empty{
+  cursor:default; display:grid; place-items:center; align-content:center; gap:10px; color:var(--muted);
+  background:
+    repeating-linear-gradient(0deg, var(--line) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 28px),
+    var(--surface);
+  background-blend-mode:normal;
+}
+.card.empty svg{width:34px; height:34px; stroke:var(--accent); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; background:var(--surface); padding:10px; box-sizing:content-box; border-radius:50%}
+.card.empty .mono{background:var(--surface); padding:2px 8px; border-radius:3px}
+.card:not(.empty):hover{border-color:var(--accent)}
+.card.link{cursor:pointer; text-decoration:none; color:var(--fg)}
+.card.link:hover{border-color:var(--accent)}
+.card.link.title{
+  text-align:center; padding:16px; gap:12px;
+  background:linear-gradient(var(--ang,135deg), color-mix(in srgb, var(--accent) var(--mix,18%), var(--surface-2)), var(--surface) 78%);
+}
+.card.link.title svg{width:38px; height:38px; padding:12px; background:var(--accent); stroke:var(--accent-ink)}
+.card.link.title b{font-family:var(--f-display); font-weight:500; font-size:clamp(.9rem,1.6vw,1.1rem); line-height:1.2; letter-spacing:-.01em; text-wrap:balance}
+.card.link.title .mono{background:transparent; color:var(--muted); padding:0}
+.card.link.title:hover .mono{color:var(--accent)}
+.card .badge{position:absolute; top:12px; right:12px; width:36px; height:36px; border-radius:50%; background:rgba(8,9,16,.72); display:grid; place-items:center}
+.card .badge svg{width:20px; height:20px; stroke:#fff; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+.card.link:hover .badge{background:var(--accent)}
+
+/* lightbox */
+.lb{position:fixed; inset:0; z-index:50; background:rgba(5,6,12,.92); display:grid; place-items:center; padding:max(20px, env(safe-area-inset-top,0px)) max(20px, env(safe-area-inset-right,0px)) max(20px, env(safe-area-inset-bottom,0px)) max(20px, env(safe-area-inset-left,0px))}
+.lb-body{max-width:min(1100px,100%); max-height:100%; display:grid; gap:12px; justify-items:center}
+.lb-body img,.lb-body video{max-width:100%; max-height:78vh; border-radius:6px; display:block}
+.lb-title{color:#ECEDF5}
+.lb-close{position:absolute; top:max(14px, env(safe-area-inset-top,0px)); right:max(14px, env(safe-area-inset-right,0px)); font:inherit; font-weight:600; cursor:pointer; background:#ECEDF5; color:#12131C; border:0; border-radius:999px; padding:8px 16px}
+
+/* about */
+.about-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(24px,5vw,72px)}
+.about-grid p{margin:0 0 16px; color:var(--muted); font-size:1.05rem}
+.about-grid p strong{color:var(--fg); font-weight:600}
+dl.facts{margin:0; display:grid; gap:0; border-top:1px solid var(--line)}
+dl.facts div{display:grid; grid-template-columns:minmax(0,9em) minmax(0,1fr); gap:16px; padding:14px 0; border-bottom:1px solid var(--line)}
+dl.facts dt{color:var(--muted)}
+dl.facts dd{margin:0; font-weight:600}
+
+/* experience */
+ol.timeline{list-style:none; margin:0; padding:0; display:grid}
+ol.timeline li{display:grid; grid-template-columns:minmax(0,13em) minmax(0,1fr); gap:8px 40px; padding:26px 0; border-top:1px solid var(--line)}
+ol.timeline li:last-child{border-bottom:1px solid var(--line)}
+.when{color:var(--muted)}
+.when .now{color:var(--accent)}
+.role h3{font-family:var(--f-display); font-weight:500; font-size:1.2rem; margin:0 0 4px; letter-spacing:-.01em}
+.role .co{color:var(--muted); font-weight:600; margin:0 0 12px}
+.role ul{margin:0; padding-left:1.1em; color:var(--muted); display:grid; gap:4px}
+
+/* skills */
+.skills-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(24px,4vw,48px)}
+.skills-grid h3{font-size:.75rem; margin:0 0 14px; color:var(--muted)}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 28px; padding:0; list-style:none}
+.chips li{border:1px solid var(--line); background:var(--surface); border-radius:999px; padding:7px 15px; font-size:.9rem; font-weight:500}
+.tool-group{margin-bottom:22px}
+.tool-group .mono{color:var(--accent); display:block; margin-bottom:8px}
+.tool-group .chips{margin:0}
+
+/* contact */
+.contact{padding-bottom:clamp(56px,8vw,96px)}
+.contact-box{border:1px solid var(--line); background:var(--surface); border-radius:12px; padding:clamp(24px,5vw,56px); display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:clamp(24px,5vw,56px); align-items:center}
+.contact-box h2{font-size:clamp(1.8rem,5vw,3.2rem)}
+.contact-box p{color:var(--muted); margin:16px 0 0}
+.rows{display:grid; gap:12px}
+.row{display:flex; align-items:center; justify-content:space-between; gap:12px; border:1px solid var(--line); border-radius:8px; padding:12px 14px; background:var(--bg)}
+.row div{min-width:0}
+.row .mono{color:var(--muted); display:block; font-size:.65rem}
+.row .v{font-weight:600; overflow-wrap:anywhere; user-select:all}
+.copy{font:inherit; font-size:.8rem; font-weight:600; cursor:pointer; border:1px solid var(--line); background:transparent; color:var(--fg); border-radius:999px; padding:6px 14px; flex:0 0 auto}
+.copy:hover{border-color:var(--accent); color:var(--accent)}
+.ext{font-weight:700; text-decoration:none; font-size:.85rem; color:var(--accent); flex:0 0 auto}
+
+footer{border-top:1px solid var(--line); padding-block:22px max(22px, env(safe-area-inset-bottom,0px)); color:var(--muted); display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px}
+
+@media (max-width:900px){
+  .grid,.grid.r-45{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-grid,.about-grid,.contact-box{grid-template-columns:minmax(0,1fr)}
+  .photo{justify-self:start; max-width:340px; margin-right:14px}
+  .skills-grid{grid-template-columns:minmax(0,1fr)}
+  ol.timeline li{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  nav.links a:not(.keep){display:none}
+  nav.links{gap:12px}
+  .grid,.grid.r-45{grid-template-columns:minmax(0,1fr)}
+  .grid.r-45{grid-template-columns:repeat(2,minmax(0,1fr))}
+  dl.facts div{grid-template-columns:minmax(0,1fr)}
+  .row{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .status b{animation:none}
+  .btn:hover{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><i></i>Athul Santhosh</a>
+    <nav class="links" aria-label="Sections">
+      <a href="#work" class="keep">Work</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact" class="keep">Contact</a>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <span class="status mono"><b></b>Open to relocate · Dubai, UAE</span>
+        <h1><span>Athul</span><span class="o">Santhosh</span></h1>
+        <p class="lede"><strong>Creative Designer</strong> with 4+ years in digital marketing agencies and tech. I make graphics, motion, AI-powered video and interfaces for brands in media, tourism, automotive, education and real estate.</p>
+        <div class="cta">
+          <a class="btn solid" href="#work">View my work</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <!-- PHOTO: put your picture's file path (or data URI) in PHOTO_SRC in the script at the bottom of this file. -->
+      <figure class="photo" id="photo">
+        <div class="frame">
+          <span class="mono hint">Photo</span>
+          <span class="mono-mark" aria-hidden="true">AS</span>
+        </div>
+        <span class="mono">Kerala, India</span>
+      </figure>
+    </div>
+
+    <div class="ruler" aria-hidden="true"><div class="head"><span class="mono">4+ yrs</span></div></div>
+  </div>
+
+  <section id="work">
+    <div class="sec-head">
+      <div>
+        <span class="mono eyebrow">Selected work</span>
+        <h2>Pick a reel.</h2>
+      </div>
+      <p>Five disciplines, one studio of one. Choose a category to see the projects.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Work categories" id="tabs"></div>
+    <div id="panel" role="tabpanel" tabindex="0"></div>
+  </section>
+
+  <section id="about">
+    <div class="sec-head">
+      <div>
+        <span class="mono eyebrow">About</span>
+        <h2>Design that moves.</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>I'm a creative designer working across <strong>graphic design, motion graphics, video editing and UI/UX</strong>. Most of my recent work is <strong>AI-powered video</strong> for marketing campaigns, from first concept to the final cut.</p>
+        <p>I've worked at digital marketing agencies and in the IT and technology sector, so I'm used to both fast campaign turnarounds and the longer, detail-heavy work of designing digital products.</p>
+        <p>I'm based in Kerala and looking for the next role in Dubai, UAE.</p>
+      </div>
+      <dl class="facts">
+        <div><dt class="mono">Based in</dt><dd>Kerala, India</dd></div>
+        <div><dt class="mono">Relocating to</dt><dd>Dubai, UAE (employment visa required)</dd></div>
+        <div><dt class="mono">Notice period</dt><dd>1 month</dd></div>
+        <div><dt class="mono">Languages</dt><dd>Malayalam (native), English (professional)</dd></div>
+        <div><dt class="mono">Education</dt><dd>BA Animation and Graphic Design, Santhigiri College of Computer Science, 2019 to 2022</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head">
+      <div>
+        <span class="mono eyebrow">Experience</span>
+        <h2>Where I've worked.</h2>
+      </div>
+    </div>
+    <ol class="timeline">
+      <li>
+        <div class="when mono"><span class="now">June 2026 to present</span><br>Kochi, India</div>
+        <div class="role">
+          <h3>Senior Creative Designer</h3>
+          <p class="co">Analyse Digital</p>
+          <ul>
+            <li>AI-powered video creation, video editing and motion graphics for digital marketing campaigns.</li>
+            <li>Promotional videos, animated content and visual storytelling for different brands.</li>
+            <li>Social media creatives, static posts and campaign graphics.</li>
+            <li>Clients across media, government and tourism, automotive, education and real estate.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="when mono">Oct 2024 to Mar 2026<br>Kochi, India</div>
+        <div class="role">
+          <h3>Creative Designer</h3>
+          <p class="co">Appadore Private Limited</p>
+          <ul>
+            <li>UI/UX design for digital products and user interfaces.</li>
+            <li>Marketing creatives and visual communication assets for digital platforms.</li>
+            <li>Motion graphics and promotional video content.</li>
+            <li>Branding and digital marketing requirements.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="when mono">June 2022 to Oct 2024<br>India</div>
+        <div class="role">
+          <h3>Visual Designer</h3>
+          <p class="co">Socedge Technologies</p>
+          <ul>
+            <li>UI/UX design and digital interface development.</li>
+            <li>Graphic design assets and marketing creatives.</li>
+            <li>Motion graphics and promotional videos for digital marketing.</li>
+            <li>Visual communication and branding support.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <div>
+        <span class="mono eyebrow">Skills and tools</span>
+        <h2>What's in the toolkit.</h2>
+      </div>
+    </div>
+    <div class="skills-grid">
+      <div>
+        <h3 class="mono">Core skills</h3>
+        <ul class="chips">
+          <li>Graphic Design</li><li>Motion Graphics</li><li>UI/UX Design</li><li>Branding &amp; Visual Communication</li>
+          <li>AI-Powered Video Creation</li><li>Video Editing &amp; Post-Production</li><li>Social Media &amp; Marketing Creatives</li><li>Visual Storytelling</li>
+        </ul>
+        <h3 class="mono">Industry exposure</h3>
+        <ul class="chips">
+          <li>Media &amp; Broadcasting</li><li>Government &amp; Tourism</li><li>Automotive</li><li>Education</li><li>Real Estate</li><li>Retail &amp; Consumer Brands</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="mono">Tools</h3>
+        <div class="tool-group"><span class="mono">Adobe Creative Suite</span>
+          <ul class="chips"><li>Photoshop</li><li>Illustrator</li><li>Premiere Pro</li><li>After Effects</li></ul></div>
+        <div class="tool-group"><span class="mono">UI/UX and design</span>
+          <ul class="chips"><li>Figma</li><li>Canva</li></ul></div>
+        <div class="tool-group"><span class="mono">AI and video generation</span>
+          <ul class="chips"><li>Kling AI</li><li>Higgsfield</li><li>Grok</li><li>Envato</li></ul></div>
+        <div class="tool-group"><span class="mono">3D and animation</span>
+          <ul class="chips"><li>Autodesk Maya</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="contact-box">
+      <div>
+        <span class="mono eyebrow">Contact</span>
+        <h2>Have a project or a role in mind?</h2>
+        <p>I'm available after a one-month notice period and open to relocating to Dubai.</p>
+      </div>
+      <div class="rows">
+        <div class="row"><div><span class="mono">Email</span><span class="v">athulksanthosh445@gmail.com</span></div><button class="copy" type="button" data-copy="athulksanthosh445@gmail.com">Copy</button></div>
+        <div class="row"><div><span class="mono">Phone</span><span class="v">+91 62383 39936</span></div><button class="copy" type="button" data-copy="+91 62383 39936">Copy</button></div>
+        <div class="row"><div><span class="mono">LinkedIn</span><span class="v">athul-santhosh1</span></div><a class="ext" href="https://linkedin.com/in/athul-santhosh1" target="_blank" rel="noopener">Open</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap mono"><span>Athul Santhosh</span><span>Creative Designer · Kerala, India</span></footer>
+
+<div class="lb" id="lb" hidden>
+  <button class="lb-close" id="lbClose" type="button">Close</button>
+  <div class="lb-body" id="lbBody"></div>
+</div>
+
+<script>
+/* ---------- 1. YOUR PHOTO ----------
+   Set PHOTO_SRC to your picture, e.g. "assets/athul.jpg" (or a data URI). Leave "" to show the AS monogram. */
+const PHOTO_SRC = "assets/athul.jpg";
+
+/* ---------- 2. YOUR WORKS ----------
+   Each category has an items array. To add a project, replace a placeholder with:
+     { title:"Project name", tag:"Client or type", type:"image", src:"works/creatives/post-01.jpg" }
+     { title:"Reel name", tag:"Client", type:"video", src:"works/ai/reel-01.mp4", poster:"works/ai/reel-01.jpg" }
+   Items with an empty src show as placeholder tiles. Add as many items as you like.
+   ratio: card shape per category ("4/5" portrait, "16/9" landscape). */
+const slot = (label) => ({ title:"", tag:label, type:"image", src:"" });
+const slots = (n) => Array.from({length:n}, (_, i) => slot("Slot " + String(i+1).padStart(2,"0")));
+
+/* Videos and images that live on Google Drive open in a new tab.
+   To play a video on this page instead, use { title:"Name", tag:"Client", type:"video", src:"works/ai/name.mp4", poster:"works/ai/name.jpg" }.
+   To add a thumbnail to a Drive tile, pass a third argument: dv("Title", "driveFileId", "works/ai/name.jpg"). */
+const dv = (title, id, thumb, tag) => ({ title, tag: tag || "Watch on Drive", type:"link", href:"https://drive.google.com/file/d/" + id + "/view", thumb });
+const di = (title, id, thumb) => dv(title, id, thumb, "View on Drive");
+
+const AI_VIDEOS = [
+  dv("Popular Kerala Ad", "10n5qS4izyqcYkbOgYt3432QnFd9o7KfK"),
+  dv("Victoris Jailer Theme Ad", "16oBdI5WwIrmn5rlt9h3CTJuAVEo1_U27"),
+  dv("Informative Ad", "17q2ly-PUiVTG4vVjBealWFAREjSCiFEk"),
+  dv("AI Ad", "1D1rD2IW560TkSW7EfDSSMhi1jgxRNPBJ"),
+  dv("Newspaper Ad", "14biI6QbXZWqYVAucffBopFxFaCzC7L9C"),
+  dv("Embassy Academy Ad", "1u4jEZyyW4eefoR1pP-rA73YjDhEU1cbP"),
+  dv("Popular Ad 1", "1ohtrk-6CDsSZEuAgoLNI_tSKmN-ovA0d"),
+  dv("Retro Diwali Invitation", "19oQ1Kn55hHe9PaornhnUFE5X8ajEQtQm"),
+  dv("Ather Scooter Ad 1", "1Rwlk8CMQ_mcT58H6CvTyMJkkqFumembF"),
+  dv("Ather Scooter Ad 2", "1V4tTDHC8524bFRvuncRk3En7PQ9mFhLD"),
+  dv("Special Day Ad", "191CwMVHSPtGjg2o9csEs9-lM5ypVT-UL"),
+  dv("Milma Product Ad", "1mMY6PL5pqbYxEAD7aJ7DGVVGAQ3-S2LQ"),
+  dv("Supplyco Supermarket Ad 1", "1Z_pp0vQ3N8Mmool4Xg7NXy5F1bdZNxLX"),
+  dv("Supplyco Supermarket Ad 2", "1lf9V9B1wLZUFjhdxn3Erh8pgUG0RORXh"),
+  dv("Gandhi Jayanthi", "1sYsR0g4Q_xXvyCl_RXDaDqFWi2qFKuDR"),
+  dv("Muthoot Homez Ad", "1CK_VqrwBZTCl8vjVZhIdfrmNp1ARSv1g"),
+  dv("Popular Ad 2", "1bXH4JpNU9SY_8TBoPbN4b0cmB7ZQJFbx"),
+  dv("Popular Ad 3", "1IRbaR6LxjXk1rvm1mfw5GPDRdIkqbjEm")
+];
+
+const MOTION = [
+  dv("Bigg Boss Reality Show Countdown", "132TVNo2p4j7EE2hL-gYf-Hq_58UZhWXP"),
+  dv("Zeekpro Showreel", "1BHe_NVzYCrtnPoZj4YLd91MImiFHH52p"),
+  dv("Diwali Offers Square", "1tlCVQi1o4YWAxvzUNLgyx9EYIDmJiLzd"),
+  dv("Credibila App Video 2", "1cTLFt_9FskDvXY3qE41jumSP4iIurx9t"),
+  dv("Malayala Manorama Poster", "1qqbHfx-x8xBgkA3w3sEi28U_9pm8NlYg"),
+  dv("Pedal Motion Graphics", "174b9GCjztltBz2RJEIF3BXuxbARXpQ6h"),
+  { title:"MM 2", tag:"Motion", type:"video", src:"works/motion/motion-01.mp4", poster:"works/motion/motion-01.jpg" },
+  dv("Supplyco Motion Graphic", "1Wr-33wv5VXIQYEfUX8P3fv_yuHWBYMNE"),
+  dv("Supplyco Onam Ad", "1mB0ynHKarfvuRnRo_CH66wW8A54dSrdg")
+];
+
+const CREATIVES = [
+  di("Game Banner 1", "1IFaSgSpYba3iWqT5loqfg0zLgwovmenF"),
+  di("Game Banner 2", "1EuMwnLOFwG_TrAfBJlBMP6NNGqzw5wYu"),
+  di("Game Banner 3", "1Pr1_dBO3dRz8q7SjAdvv46uMoRCR0ycr"),
+  di("Game Banner 4", "1_Mi0htRBqr6lFdnN5fo8OXZWpMwVUS4g"),
+  di("Game Banner 5", "1tUXX33766zvlwdTlHIyPabg_FvPNuyeA"),
+  di("Feaba Ad Creative", "1jqQkvaPq9CDMtR4fM7n8K7qUm49WK2gX"),
+  di("Feaba Travels Ad", "1tm1JUlRYw_6QKR3jyO7dZ7a7UuFEXMF0"),
+  di("JioMart Ad 1", "1X7i3mku4FUbTuBTkwXgY5Dk_xgypj4PZ"),
+  di("JioMart Ad 2", "1HlGQwp-pvomxXzeUwza7Lemb26C2If1R"),
+  di("JioMart Ad 3", "1MTgE53fTWRTRsiBEuQ0Q_a7w7fupQsts"),
+  di("JioMart Ad 4", "1T6QhjkjcQ6PPNYgUhgce0pYOD9GgMT9e"),
+  di("Jawan Creative 1", "12Plqin3XemKiS_AzmrqhJMG1zbFyOOB1"),
+  di("Jawan Creative 2", "13UimGKlERwDxhIJkfX-fXdF51gqEJLyz"),
+  di("Horizon Banner Design", "1lbow-fYf6Wb_2VrGUesQLnNxeVhG-vZE"),
+  di("New Year Creative", "1tFSPA4rc77t1iVTrVIutE6Rt-YhM-LJu")
+];
+
+const VFX = [
+  dv("Play Music", "1QlYJX_VStfCQdwNeVoDpXWZysxv__pC6"),
+  dv("Short Film VFX Scenes", "1gOO14M4BDm42R49kyKrrrFUwDBqpW-DS"),
+  dv("Shoe", "1udRq0QmQNzZU3-ztB7XilNocn-yXBrRH")
+];
+
+const THREE_D = [
+  dv("GTA 6 Promo", "1iWDK3QGS5nbjfiqdflu4IMkoUFCOGEHM"),
+  dv("Maruti Zen Reel", "1r45PULNeO4pzBU6atjCVZdwbrk6tC6_7"),
+  dv("Robotic Company Demo", "1afilD9n_Zpwn0m5hKk0JRyFtZJ_rMlh2"),
+  dv("Actor Dulquer Salmaan", "10x5VV6H542Q7NH35u1sE6YdH_6pjWL-p")
+];
+
+const WORKS = [
+  { id:"ai",        label:"AI Videos", note:"AI-powered promos and visual storytelling.", ratio:"16/9", cols:"", icon:"spark", items:AI_VIDEOS },
+  { id:"motion",    label:"Motion Graphics", note:"Animated content and promotional video.", ratio:"4/5", cols:"r-45", icon:"play", items:MOTION },
+  { id:"creatives", label:"Creatives", note:"Social posts, campaign graphics, banners.", ratio:"4/5", cols:"r-45", icon:"frame", items:CREATIVES },
+  { id:"vfx",       label:"VFX", note:"Compositing and visual effects.", ratio:"16/9", cols:"", icon:"wand", items:VFX },
+  { id:"3d",        label:"3D", note:"Modelling and animation in Autodesk Maya.", ratio:"16/9", cols:"r-45", icon:"cube", items:THREE_D }
+];
+
+/* ---------- rendering (no need to edit below) ---------- */
+const ICONS = {
+  frame:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg>',
+  spark:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v5M12 16v5M3 12h5M16 12h5M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3"/></svg>',
+  play:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/></svg>',
+  wand:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20L16 8M14 6l4 4M18 3v3M20.5 4.5h-3M7 5v2M8 6H6"/></svg>',
+  cube:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></svg>'
+};
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const tabsEl = document.getElementById("tabs");
+const panelEl = document.getElementById("panel");
+let current = 0;
+
+function renderTabs(){
+  tabsEl.innerHTML = WORKS.map((w, i) =>
+    '<button class="tab" role="tab" id="tab-' + w.id + '" aria-selected="' + (i === current) + '" aria-controls="panel" tabindex="' + (i === current ? 0 : -1) + '" data-i="' + i + '">' +
+    esc(w.label) + '<span class="n">' + String(w.items.length).padStart(2,"0") + '</span></button>'
+  ).join("");
+}
+
+function renderPanel(){
+  const w = WORKS[current];
+  const filled = w.items.filter((it) => it.src || it.href).length;
+  panelEl.setAttribute("aria-labelledby", "tab-" + w.id);
+  let html = '<div class="panel-note"><span>' + esc(w.note) + '</span>' +
+    (filled === 0 ? '<span class="mono">Layout preview · files coming soon</span>' : '') + '</div>';
+  html += '<div class="grid ' + w.cols + '" style="--ratio:' + w.ratio + '">';
+  w.items.forEach((it, idx) => {
+    if (it.href && it.thumb){
+      html += '<a class="card link" href="' + esc(it.href) + '" target="_blank" rel="noopener">' +
+        '<img src="' + esc(it.thumb) + '" alt="' + esc(it.title) + '" loading="lazy">' +
+        '<span class="badge">' + ICONS.play.replace(/<circle[^>]*\/>/, "") + '</span>' +
+        '<span class="cap"><b>' + esc(it.title) + '</b><span class="mono">' + esc(it.tag || "") + ' ↗</span></span></a>';
+      return;
+    }
+    if (it.href){
+      const ang = 110 + (idx * 37) % 100, mix = 12 + (idx * 7) % 22;
+      html += '<a class="card empty link title" style="--ang:' + ang + 'deg;--mix:' + mix + '%" href="' + esc(it.href) + '" target="_blank" rel="noopener">' + ICONS.play +
+        '<b>' + esc(it.title) + '</b><span class="mono">' + esc(it.tag || "") + ' ↗</span></a>';
+      return;
+    }
+    if (!it.src){
+      html += '<div class="card empty">' + ICONS[w.icon] + '<span class="mono">' + esc(it.tag || "Coming soon") + '</span></div>';
+      return;
+    }
+    const media = it.type === "video"
+      ? '<video src="' + esc(it.src) + '"' + (it.poster ? ' poster="' + esc(it.poster) + '"' : '') + ' muted playsinline preload="metadata"></video>'
+      : '<img src="' + esc(it.src) + '" alt="' + esc(it.title || w.label) + '" loading="lazy">';
+    html += '<button class="card" type="button" data-idx="' + idx + '" aria-label="Open ' + esc(it.title || w.label) + '">' + media +
+      '<span class="cap"><b>' + esc(it.title) + '</b><span class="mono">' + esc(it.tag || "") + '</span></span></button>';
+  });
+  html += '</div>';
+  panelEl.innerHTML = html;
+}
+
+function selectTab(i, focus){
+  current = i;
+  renderTabs();
+  renderPanel();
+  if (focus) document.getElementById("tab-" + WORKS[i].id).focus();
+}
+
+tabsEl.addEventListener("click", (e) => {
+  const b = e.target.closest(".tab");
+  if (b) selectTab(Number(b.dataset.i), false);
+});
+tabsEl.addEventListener("keydown", (e) => {
+  if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+  const d = e.key === "ArrowRight" ? 1 : -1;
+  selectTab((current + d + WORKS.length) % WORKS.length, true);
+  e.preventDefault();
+});
+
+/* hover to preview video cards */
+panelEl.addEventListener("mouseover", (e) => {
+  const v = e.target.closest(".card") && e.target.closest(".card").querySelector("video");
+  if (v && v.paused) { v.play().catch(() => {}); }
+});
+panelEl.addEventListener("mouseout", (e) => {
+  const c = e.target.closest(".card");
+  if (!c || c.contains(e.relatedTarget)) return;
+  const v = c.querySelector("video");
+  if (v) { v.pause(); v.currentTime = 0; }
+});
+
+/* lightbox */
+const lb =document.getElementById("lb");
+const lbBody = document.getElementById("lbBody");
+function openLb(item){
+  const media = item.type === "video"
+    ? '<video src="' + esc(item.src) + '" controls autoplay playsinline></video>'
+    : '<img src="' + esc(item.src) + '" alt="' + esc(item.title || "") + '">';
+  lbBody.innerHTML = media + '<div class="lb-title mono">' + esc(item.title) + (item.tag ? ' · ' + esc(item.tag) : '') + '</div>';
+  lb.hidden = false;
+  document.getElementById("lbClose").focus();
+}
+function closeLb(){ lb.hidden = true; lbBody.innerHTML = ""; }
+panelEl.addEventListener("click", (e) => {
+  const c = e.target.closest(".card[data-idx]");
+  if (c) openLb(WORKS[current].items[Number(c.dataset.idx)]);
+});
+document.getElementById("lbClose").addEventListener("click", closeLb);
+lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !lb.hidden) closeLb(); });
+
+/* photo */
+if (PHOTO_SRC){
+  const ph = document.getElementById("photo");
+  const img = document.createElement("img");
+  img.src = PHOTO_SRC; img.alt = "Athul Santhosh";
+  ph.classList.add("has-photo");
+  ph.querySelector(".frame").appendChild(img);
+}
+
+/* theme toggle */
+document.getElementById("themeBtn").addEventListener("click", () => {
+  const root = document.documentElement;
+  const t = root.getAttribute("data-theme");
+  const dark = t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  root.setAttribute("data-theme", dark ? "light" : "dark");
+});
+
+/* copy buttons */
+document.querySelectorAll(".copy").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const text = btn.dataset.copy;
+    const done = () => { const o = btn.textContent; btn.textContent = "Copied"; setTimeout(() => { btn.textContent = o; }, 1400); };
+    const fallback = () => {
+      const v = btn.parentElement.querySelector(".v");
+      const r = document.createRange(); r.selectNodeContents(v);
+      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+  });
+});
+
+selectTab(0, false);
+</script>
+</body>
+</html>
